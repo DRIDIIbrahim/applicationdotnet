@@ -1,0 +1,33 @@
+﻿@model List<projett.Models.Commande>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    <h2>Liste des commandes :</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Article</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var commande in Model)
+            {
+                <tr>
+                    <td>@commande.OrderId</td>
+                    <td>@commande.Article</td>
+                    <td>@commande.Qte</td>
+                    <td>@commande.Prix</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
