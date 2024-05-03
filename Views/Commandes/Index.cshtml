@@ -1,66 +1,4 @@
-﻿@* @using Microsoft.AspNetCore.Http
-
-@model IEnumerable<projett.Models.Commande>
-
-@{
-    ViewData["Title"] = "Index";
-}
-@{
-    var userIdObject = ViewContext.HttpContext.Session.GetInt32("UserId");
-    var userId = userIdObject.HasValue ? userIdObject.Value : 0;
-    var title = (userId != 3) ? "Commande" : "Approbateur";
-}
-<h1>@title</h1>
-
-<p>
-    <a asp-action="Create">Create</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Article)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Qte)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prix)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Article)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Qte)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prix)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<form method="post" asp-controller="Home" asp-action="Login" class="mt-3">
-    <button type="submit" class="btn btn-danger">Déconnexion</button>
-</form>
- *@
+﻿
  @using Microsoft.AspNetCore.Http
 
 @model IEnumerable<projett.Models.Commande>
@@ -71,7 +9,7 @@
 @{
     var userIdObject = ViewContext.HttpContext.Session.GetInt32("UserId");
     var userId = userIdObject.HasValue ? userIdObject.Value : 0;
-    var title = (userId != 3) ? "Commande" : "Approbateur";
+    var title = (userId != 3) ? "Demandeur" : "Approbateur";
 }
 <h1>@title</h1>
 
@@ -136,9 +74,13 @@
                     </td>
                 }
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+                    @if (userId == 3)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.OrderId">Modifier</a>
+                    }
+                    |
+                    <a asp-action="Details" asp-route-id="@item.OrderId">Détaille</a> |
+                    <a asp-action="Delete" asp-route-id="@item.OrderId">Supprimer</a>
                 </td>
             </tr>
         }

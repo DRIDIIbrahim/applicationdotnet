@@ -25,8 +25,7 @@ namespace projett.Controllers
         public async Task<IActionResult> Index()
         {
 
-            //var projettestContext = _context.Commandes.Include(c => c.User);
-            //return View(await projettestContext.ToListAsync());
+            
             int? userId = HttpContext.Session.GetInt32("UserId");
 
             if (userId == null)
@@ -51,11 +50,7 @@ namespace projett.Controllers
 
             return View(commandes);
 
-            //var commandes = await _context.Commandes
-            //                              .Where(c => c.UserId == userId)
-            //                              .ToListAsync();
-
-            //return View(commandes);
+            
         }
 
         // GET: Commandes/Details/5

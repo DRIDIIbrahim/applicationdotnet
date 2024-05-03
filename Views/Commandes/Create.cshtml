@@ -1,21 +1,72 @@
 ﻿@using Microsoft.AspNetCore.Http
 
 @model projett.Models.Commande
+<style>
+    /* Définition des styles pour le conteneur principal */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Styles pour les étiquettes de formulaire */
+    .form-label {
+        font-weight: bold;
+    }
+
+    /* Styles pour les zones de saisie */
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Styles pour les boutons */
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    /* Styles pour les liens */
+    .link {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+</style>
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Création De Commande</h1>
 
-<h4>Commande</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="OrderId" class="control-label"></label>
+                <label asp-for="OrderId" class="control-label">Numéro Commande</label>
                 <input asp-for="OrderId" class="form-control" />
                 <span asp-validation-for="OrderId" class="text-danger"></span>
             </div>
@@ -45,7 +96,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retourner au liste des commandes</a>
 </div>
 
 @section Scripts {
